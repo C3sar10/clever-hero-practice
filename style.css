@@ -1,0 +1,28 @@
+/* THIS IS THE BOILER PLATE STYLES DO NOT CHANGE ANYTHING HERE */
+/*******/
+/*******/
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 16px;
+  font-family: "Inter", sans-serif;
+  width: 100%;
+  overflow-x: hidden;
+  height: 100%;
+  min-height: 100vh;
+}
+
+/*******/
+/*******/
+/* THIS IS THE BOILER PLATE STYLES DO NOT CHANGE ANYTHING HERE */
+
+/* You can use this root element for variables to help make css styling easier */
+
+:root {
+  /* use for colors, typography, etc.*/
+}
