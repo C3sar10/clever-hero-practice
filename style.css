@@ -9,12 +9,15 @@
 }
 
 body {
-  font-size: 16px;
+  font-size: var(--text-size);
   font-family: "Inter", sans-serif;
   width: 100%;
   overflow-x: hidden;
   height: 100%;
   min-height: 100vh;
+  background-color: var(--background-color);
+  display: flex;
+  flex-direction: column;
 }
 
 /*******/
@@ -24,5 +27,203 @@ body {
 /* You can use this root element for variables to help make css styling easier */
 
 :root {
-  /* use for colors, typography, etc.*/
+  --background-color: #0E101F;
+  --Color-text: #FFFFFF;
+  --Red-color: #F61232;
+  --Light-Red: #F96F82;
+  --Light-blue-color: #9DB2C9;
+  --Button-Hover-BKG: #B8B8B8;
+  --Input-BKG-color: #4C4D55;
+
+  --H1-size: 64px;
+  --Subtitle-size: 16px;
+  --text-size: 24px;
+  --Nav-links: 16px; /* or 24px */
+  --Button-size: 16px;
+}
+
+.navbar {
+  height: 8vw;
+  padding: 75px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.logo {
+  aspect-ratio: 111 / 32;
+  height: auto;
+  width: 111px;
+  background-image: url(/assets/images/clever\ Logo.png);
+  background-repeat: no-repeat;
+  /* background-size: auto; */
+  background-position: center;
+}
+
+.tabs {
+  /* background-color: red; */
+  height: 5vw;
+  width: auto;
+  display: flex;
+  align-items: center;
+  gap: 80px;
+}
+
+.links {
+  border: none;
+  font-size: var(--Nav-links);
+  background-color: var(--background-color);
+  color: var(--Color-text);
+}
+
+.links:hover,
+.links:focus,
+.sign-up:hover,
+.sign-up:focus {
+  color: var(--Red-color);
+}
+
+.buttons {
+  /* background-color: red; */
+  height: 100%;
+  width: 25vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sign-up {
+  font-size: var(--Button-size);
+  height: 4.5vw;
+  width: 12vw;
+  max-height: 40px;
+  max-width: 150px;
+  border: none;
+  border-radius: 10px;
+  background-color: var(--background-color);
+  color: var(--Color-text);
+}
+
+.sign-up.Register {
+  background-color: var(--Color-text);
+  color: var(--background-color);
+}
+
+.sign-up.Register:focus,
+.sign-up.Register:hover {
+  background-color: var(--Button-Hover-BKG);
+}
+
+.body-container {
+  /* background-color: red; */
+  height: 100%;
+  display: flex;
+  padding: 45px 100px;
+  align-items: center;
+  justify-content: space-around;
+  flex: 1;
+}
+
+.photo {
+  background-image: url(/assets/images/Berry-hero-img.png); 
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  aspect-ratio: 5 / 7;
+  width: 500px;
+  height: auto;
+  border-radius: 10px;
+}
+
+.content-container {
+  /* background-color: green; */
+  height: 500px;
+  width: 500px;
+  color: var(--Color-text);
+  font-size: var(--text-size);
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  font-size: var(--H1-size);
+  padding-top: 24px;
+  line-height: 1;
+}
+
+.text-container {
+  padding-top: 24px;
+  font-size: var(--text-size);
+}
+
+.body-text.shadow {
+  color: var(--Light-blue-color);
+}
+
+.input-field {
+  padding-top: 16px;
+  width: 100%;
+  padding-bottom: 16px;
+}
+
+.input {
+  height: 40px;
+  width: calc(100% / 2 - 5px);
+  outline: none;
+  border-radius: 5px;
+  background-color: var(--Input-BKG-color);
+  border: none;
+}
+
+.input:focus,
+.input:hover {
+  background-color: var(--Button-Hover-BKG);
+}
+
+.access {
+  background-color: var(--Red-color);
+  color: var(--Color-text);
+  font-size: var(--Button-size);
+  height: 60px;
+  width: 100%;
+  border-radius: 5px;
+  border: none;
+}
+
+.access:focus,
+.access:hover {
+  background-color: var(--Light-Red);
+}
+
+input {
+  box-sizing: border-box;
+  padding-left: 5px;
+  color: var(--Color-text);
+  font-family: 14px;
+}
+
+input::placeholder {
+  color: var(--Color-text);
+}
+
+button {
+  cursor: pointer;
+}
+
+@media (max-width: 479px) {
+  body {
+    --H1-size: 36px;
+    --Nav-links: 20px;
+    --text-size: 16px;
+  }
+}
+
+@media (min-width: 480px) and (max-width: 767px) {
+  body {
+    --H1-size: 48px;
+    --text-size: 16px;
+  }
 }
