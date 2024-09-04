@@ -44,7 +44,7 @@ body {
 
 .navbar {
   height: 8vw;
-  padding: 75px;
+  padding: 40px;
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -77,6 +77,7 @@ body {
   font-size: var(--Nav-links);
   background-color: var(--background-color);
   color: var(--Color-text);
+  text-decoration: none;
 }
 
 .links:hover,
@@ -117,6 +118,10 @@ body {
   background-color: var(--Button-Hover-BKG);
 }
 
+.hamburger-menu {
+  display: none;
+}
+
 .body-container {
   /* background-color: red; */
   height: 100%;
@@ -127,6 +132,11 @@ body {
   flex: 1;
 }
 
+.sidebar {
+  display: none;
+  position: fixed;
+}
+
 .photo {
   background-image: url(/assets/images/Berry-hero-img.png); 
   background-repeat: no-repeat;
@@ -134,6 +144,7 @@ body {
   background-position: center;
   aspect-ratio: 5 / 7;
   width: 500px;
+  min-width: 350px;
   height: auto;
   border-radius: 10px;
 }
@@ -146,6 +157,7 @@ body {
   font-size: var(--text-size);
   display: flex;
   flex-direction: column;
+  padding-left: 15px;
 }
 
 .title {
@@ -215,15 +227,140 @@ button {
 
 @media (max-width: 479px) {
   body {
+    /* background-color: red; */
     --H1-size: 36px;
     --Nav-links: 20px;
     --text-size: 16px;
+    --bar-width: 60px;
+    --bar-height: 8px;
+    --hamburger-gap: 6px;
   }
 }
 
 @media (min-width: 480px) and (max-width: 767px) {
   body {
+    /* background-color: green; */
     --H1-size: 48px;
     --text-size: 16px;
+    --bar-width: 35px;
+    --bar-height: 3px;
+    --hamburger-gap: 6px;
+    --hamburger-margin: 8px;
+    --animation-timing: 200ms ease-in-out;
+    --hamburger-height: calc(var(--bar-height) * 3 + var(--hamburger-gap) * 2);
   }
+
+  .navbar-left {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .tabs {
+    display: none;
+  }
+
+  .hamburger-menu {
+    --x-width: calc(var(--hamburger-height) * 1.41421356237);
+
+    display: flex;
+    flex-direction: column;
+    gap: var(--hamburger-gap);
+    width: max-content;
+    z-index: 3;
+    cursor: pointer;
+  }
+
+  .hamburger-menu:has(input:focus-visible)::before,
+  .hamburger-menu:has(input:focus-visible)::after,
+  .hamburger-menu input:focus-visible {
+    border: 1px solid var(--background-color);
+    box-shadow: 0 0 0 1px var(--Color-text);
+  }
+
+  .hamburger-menu::before,
+  .hamburger-menu::after,
+  .hamburger-menu input {
+    content: "";
+    width: var(--bar-width);
+    height: var(--bar-height);
+    background-color: var(--Color-text);
+    border-radius: 9999px;
+    transform-origin: left center;
+    transition: opacity var(--animation-timing), width var(--animation-timing),
+      rotate var(--animation-timing), translate var(--animation-timing),
+      background-color var(--animation-timing);
+  }
+
+  .hamburger-menu input {
+    appearance: none;
+    padding: 0;
+    margin: 0;
+    outline: none;
+    pointer-events: none;
+  }
+
+  .hamburger-menu:has(input:checked)::before {
+    rotate: 45deg;
+    width: var(--x-width);
+    translate: 0 calc(var(--bar-height) / -2);
+    background-color: var(--background-color);
+  }
+  
+  .hamburger-menu:has(input:checked)::after {
+    rotate: -45deg;
+    width: var(--x-width);
+    translate: 0 calc(var(--bar-height) / 2);
+    background-color: var(--background-color);
+  }
+  
+  .hamburger-menu input:checked {
+    opacity: 0;
+    width: 0;
+  }
+
+  .sidebar {
+    top: 0;
+    right: 15rem; /* Initially hidden off-screen */
+    width: 15rem; /* Set width */
+    height: 100vh; /* Full viewport height */
+    background-color: hsl(0, 23%, 97%);
+    color: var(--background-colornd);
+    padding: 0.5rem 1rem;
+    padding-top: 8rem;
+    transform: translateX(200%); /* Initially out of view */
+    transition: transform var(--animation-timing); /* Smooth transition */
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .menu-items {
+    text-decoration: none;
+    color: var(--background-color);
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  .menu-items:focus,
+  .menu-items:hover {
+    color: var(--Red-color);
+  }
+  
+  .hamburger-menu:has(input:checked) + .sidebar {
+    transform: translateX(100%);
+  }
+
+  .body-container {
+    flex-direction: column-reverse;
+  }
+
+  .content-container {
+    padding-left: 0;
+    height: auto;
+    padding-bottom: 50px;
+  }
+
 }
