@@ -69,7 +69,7 @@ body {
   width: auto;
   display: flex;
   align-items: center;
-  gap: 80px;
+  gap: 32px;
 }
 
 .links {
@@ -514,6 +514,14 @@ button {
     color: var(--background-color);
     font-size: 20px;
     font-weight: bold;
+  }
+
+  .buttons {
+    width: fit-content;
+  }
+
+  .sign-up.sign-up.Register {
+    min-width: 75px;
   }
 
   .sidebar > :nth-last-child(1) {
